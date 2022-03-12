@@ -3,10 +3,10 @@ import Logo from './Logo';
 
 const Navbar = ({ link1, link2, link3, link1To, link2To, link3To }) => {
 	return (
-		<div>
-			<nav>
+		<div className='py-5 flex flex-col items-between space-y-9 bg-black px-8 mx-auto text-slate-200'>
+			<nav className='flex items-center justify-between'>
 				<Logo />
-				<div>
+				<div className='hidden md:flex items-center space-x-9'>
 					<Link href={link1To}>
 						<a>{link1}</a>
 					</Link>
@@ -17,7 +17,12 @@ const Navbar = ({ link1, link2, link3, link1To, link2To, link3To }) => {
 						<a>{link3}</a>
 					</Link>
 				</div>
-				<button>
+				<button
+					onClick={() => {
+						document.querySelector('.mobile-menu').classList.toggle('hidden');
+					}}
+					className='md:hidden flex items-center'
+				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						className='h-6 w-6'
@@ -34,7 +39,7 @@ const Navbar = ({ link1, link2, link3, link1To, link2To, link3To }) => {
 					</svg>
 				</button>
 			</nav>
-			<div>
+			<div className='mobile-menu hidden md:hidden flex flex-col items-end space-y-2 px-9 pt-3 pb-3 text-sm'>
 				<Link href={link1To}>
 					<a>{link1}</a>
 				</Link>
